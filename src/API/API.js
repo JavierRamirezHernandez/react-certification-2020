@@ -2,28 +2,32 @@
 class API {
   constructor() {
     this.apiUrl = new URL('https://www.googleapis.com/youtube/v3/');
-    this.API_KEY = 'AIzaSyDC2McN7ERPMoqWCo6d_p8PtAtYIk0Dh-s';
+    this.API_KEY = 'AIzaSyAlEpcNYV9orZvOMl9Y8fMzpr-3aPWT9JU';
     this.queryParams = {
       key: this.API_KEY,
       part: 'snippet',
     };
   }
 
-  async get(route = '/search') {
+  async get(route = '/search', querySearch = 'wizeline', relatedToVideoId = false) {
     let response;
     try {
       const params = {
         ...this.queryParams,
-        // ...queryParams,
+        q: querySearch,
         type: 'video',
         videoEmbeddable: true,
         maxResults: 25,
       };
+      if (relatedToVideoId) {
+        delete params.q;
+        params['relatedToVideoId'] = relatedToVideoId;
+      }
       const url = new URL(route, this.apiUrl);
       for (const [key, value] of Object.entries(params)) {
         url.searchParams.set(key, value);
       }
-      url.searchParams.set('q', 'guadalajara');
+      console.log(url);
       response = await fetch(url);
     } catch (e) {
       console.log(`Error while retrieving info for route ${route}`, e);

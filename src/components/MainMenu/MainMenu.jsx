@@ -8,15 +8,13 @@ const MainMenu = () => {
   return (
     <Menu>
       <Menu.Item>
-        <Link to="/">
-          <Icon name="home" />
-        </Link>
+        <Link to="/">Home</Link>
       </Menu.Item>
-      {/* <Menu.Item>
-        <Link to="/characters">
-          <FormattedMessage id="sections.characters" />
-        </Link>
-      </Menu.Item> */}
+      {authenticated && (
+        <Menu.Item>
+          <Link to="/favorites">Favorites</Link>
+        </Menu.Item>
+      )}
       <Menu.Menu position="right">
         {authenticated && user ? <Menu.Item>Usuario: {user.name}</Menu.Item> : null}
         {authenticated ? (

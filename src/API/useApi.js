@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import API from './API';
 
-const useApi = (entity, id) => {
+const useApi = (entity, id, relatedToVideoId) => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState({});
 
   useEffect(() => {
     let requestPromisse;
     if (entity === 'search') {
-      requestPromisse = API.get(entity, id);
+      requestPromisse = API.get(entity, id, relatedToVideoId);
     } else {
       requestPromisse = API.getEntity(entity, id);
     }
