@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 class API {
   constructor() {
     this.apiUrl = new URL('https://www.googleapis.com/youtube/v3/');
@@ -19,9 +20,7 @@ class API {
         maxResults: 25,
       };
       const url = new URL(route, this.apiUrl);
-      // eslint-disable-next-line no-restricted-syntax
       for (const [key, value] of Object.entries(params)) {
-        console.log(`${key}: ${value}`);
         url.searchParams.set(key, value);
       }
       url.searchParams.set('q', 'guadalajara');
@@ -35,8 +34,11 @@ class API {
 
   async getEntity(route = '/videos', id) {
     let response;
+    if (!id) return [];
+
+    const idParam = typeof id === 'string' ? id : id.join(',');
     const queryParams = {
-      id,
+      id: idParam,
     };
     try {
       const params = {
@@ -44,12 +46,9 @@ class API {
         ...queryParams,
       };
       const url = new URL(route, this.apiUrl);
-      // eslint-disable-next-line no-restricted-syntax
       for (const [key, value] of Object.entries(params)) {
-        console.log(`${key}: ${value}`);
         url.searchParams.set(key, value);
       }
-      console.log('dsfsdfsdffsdfsd-----------------', url);
       response = await fetch(url);
     } catch (e) {
       console.log(`Error while retrieving info for route ${route}`, e);

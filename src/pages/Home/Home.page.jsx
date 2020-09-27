@@ -10,16 +10,7 @@ function HomePage() {
   // const history = useHistory();
   const sectionRef = useRef(null);
   const { isLoading, data } = useApi('search');
-  // const { authenticated, logout } = useAuth();
-
-  // function deAuthenticate(event) {
-  //   event.preventDefault();
-  //   logout();
-  //   history.push('/');
-  // }
-  // console.log('isLoading ', isLoading);
-  // console.log('data ', data);
-
+  // const [isLoading, data] = [false, []];
   return (
     <section className="homepage" ref={sectionRef}>
       <h1>Video listing</h1>

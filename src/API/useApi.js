@@ -6,7 +6,13 @@ const useApi = (entity, id) => {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    API.getEntity(entity, id)
+    let requestPromisse;
+    if (entity === 'search') {
+      requestPromisse = API.get(entity, id);
+    } else {
+      requestPromisse = API.getEntity(entity, id);
+    }
+    requestPromisse
       .then((response) => {
         if (response['error']) throw response['error']['message'];
         setData(response);

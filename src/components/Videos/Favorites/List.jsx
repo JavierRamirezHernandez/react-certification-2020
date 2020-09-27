@@ -7,7 +7,7 @@ const VideosList = ({ data }) => {
   return (
     <Grid stackable columns={4}>
       {items.map((video) => (
-        <Info key={video.id.videoId} video={video} />
+        <Info key={video.id} video={video} />
       ))}
     </Grid>
   );

@@ -7,6 +7,7 @@ import VideoDetailsPage from '../../pages/VideoDetails';
 import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
 import SecretPage from '../../pages/Secret';
+import FavoritesPage from '../../pages/Favorites';
 import Private from '../Private';
 import Fortune from '../Fortune';
 import Layout from '../Layout';
@@ -46,12 +47,15 @@ function App() {
               <Fortune />
             </Layout>
           </Route>
-          <Route exact path="/:id">
-            <VideoDetailsPage />
+          <Route exact path="/favorites">
+            <FavoritesPage />
           </Route>
           <Private exact path="/secret">
             <SecretPage />
           </Private>
+          <Route exact path="/:id">
+            <VideoDetailsPage />
+          </Route>
           <Route path="*">
             <NotFound />
           </Route>
