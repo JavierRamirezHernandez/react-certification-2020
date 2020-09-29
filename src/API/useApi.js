@@ -23,7 +23,7 @@ const useApi = (entity, id, relatedToVideoId) => {
         setIsLoading(false);
         console.error(error);
       });
-  }, [entity, id]);
+  }, [entity, id, relatedToVideoId]);
   return { isLoading, data };
 };
 
