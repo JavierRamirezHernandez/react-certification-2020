@@ -14,24 +14,36 @@ const Info = ({ video }) => {
   }
   return (
     <Grid.Column>
-      <Card>
+      <Card fluid>
         <Link to={`/${video.id}`}>
           <Image src={video.snippet.thumbnails.medium.url} />
         </Link>
         <Card.Content>
-          <Card.Description>
+          <Card.Description textAlign="right">
             {isFavoriteVideo(video.id) ? (
-              <button type="button" onClick={() => removeFromFavorites(video.id)}>
-                Remover de favoritos
+              <button
+                className="ui inverted red button"
+                type="button"
+                onClick={() => removeFromFavorites(video.id)}
+              >
+                <i className="minus circle icon" />
+                Remove from favorites
               </button>
             ) : (
-              <button type="button" onClick={() => addToFavorites(video.id)}>
-                Agregar a favoritos
+              <button
+                className="ui youtube button"
+                type="button"
+                onClick={() => addToFavorites(video.id)}
+              >
+                <i className="plus icon" />
+                Add to favorites
               </button>
             )}
+            <br />
+            <br />
           </Card.Description>
-          <Card.Header textAlign="center">{video.snippet.title}</Card.Header>
-          <Card.Description>{video.snippet.description}</Card.Description>
+          <Card.Header>{video.snippet.localized.title}</Card.Header>
+          <Card.Meta textAlign="justify">{video.snippet.localized.description}</Card.Meta>
         </Card.Content>
       </Card>
     </Grid.Column>

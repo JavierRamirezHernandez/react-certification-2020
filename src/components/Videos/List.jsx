@@ -5,7 +5,7 @@ import Info from './Info';
 const VideosList = ({ data }) => {
   const { items } = data;
   return (
-    <Grid stackable columns={4}>
+    <Grid columns={4}>
       {items.map((video) => (
         <Info key={video.id.videoId} video={video} />
       ))}

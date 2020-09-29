@@ -5,7 +5,6 @@ import { useAuth } from '../../providers/Auth';
 
 function Private({ children, ...rest }) {
   const { authenticated } = useAuth();
-  console.log('authenticated ', authenticated);
   return (
     <Route {...rest} render={() => (authenticated ? children : <Redirect to="/" />)} />
   );

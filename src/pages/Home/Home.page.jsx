@@ -24,39 +24,36 @@ function HomePage() {
 
   return (
     <section className="homepage" ref={sectionRef}>
-      <h1>Video listing</h1>
-
-      <form onSubmit={search}>
-        <input type="text" id="querySearch" />
-        <button type="submit">Search</button>
-      </form>
+      <div className="ui two column centered grid">
+        <div className="column centered">
+          <h1>Video listing</h1>
+        </div>
+      </div>
+      <div className="ui two column centered grid">
+        <div className="column centered">
+          <form onSubmit={search} className="ui form">
+            <div className="field">
+              <div className="ui massive action input" data-children-count="1">
+                <input type="text" id="querySearch" placeholder="Search..." />
+                <button type="submit" className="ui red  button">
+                  <i className="white search icon big" />
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
 
       {isLoading ? <div>loading...</div> : null}
       {!objectIsEmpty(data) ? (
         <>
           <List isLoading={isLoading} data={data} />
-          {data.prevPageToken && <button type="button">Previous</button>}
-          {data.nextPageToken && <button type="button">Next</button>}
+          {/* {data.prevPageToken && <button type="button">Previous</button>}
+          {data.nextPageToken && <button type="button">Next</button>} */}
         </>
       ) : (
         <div>Not found videos</div>
       )}
-
-      {/* <h1>Hello stranger!</h1>
-      {authenticated ? (
-        <>
-          <h2>Good to have you back</h2>
-          <span>
-            <Link to="/" onClick={deAuthenticate}>
-              ← logout
-            </Link>
-            <span className="separator" />
-            <Link to="/secret">show me something cool →</Link>
-          </span>
-        </>
-      ) : (
-        <Link to="/login">let me in →</Link>
-      )} */}
     </section>
   );
 }

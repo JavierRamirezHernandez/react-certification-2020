@@ -28,35 +28,47 @@ function LoginPage() {
   }
 
   return (
-    <section className="login">
-      <h1>Sign in</h1>
-      <h3>to continue to YouTube</h3>
-      <form onSubmit={authenticate} className="login-form">
-        <div className="form-group">
-          <label htmlFor="username">
-            <strong>username </strong>
-            <input
-              required
-              type="text"
-              id="username"
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </label>
+    <>
+      <section className="login">
+        <h1>Sign in</h1>
+        <h3>to continue to YouTube</h3>
+        <form onSubmit={authenticate} className="login-form">
+          <div className="form-group">
+            <label htmlFor="username">
+              <strong>username </strong>
+              <input
+                required
+                type="text"
+                id="username"
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </label>
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">
+              <strong>password </strong>
+              <input
+                required
+                type="password"
+                id="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </label>
+          </div>
+          <button type="submit" className="ui fluid red button">
+            login
+          </button>
+        </form>
+      </section>
+      <section className="login">
+        <div className="ui ignored bottom attached warning message">
+          <ul>
+            <li>username: wizeline</li>
+            <li>password: Rocks!</li>
+          </ul>
         </div>
-        <div className="form-group">
-          <label htmlFor="password">
-            <strong>password </strong>
-            <input
-              required
-              type="password"
-              id="password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-        </div>
-        <button type="submit">login</button>
-      </form>
-    </section>
+      </section>
+    </>
   );
 }
 
