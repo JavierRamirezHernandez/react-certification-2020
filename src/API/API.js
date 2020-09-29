@@ -22,12 +22,13 @@ class API {
       if (relatedToVideoId) {
         delete params.q;
         params['relatedToVideoId'] = relatedToVideoId;
+      } else if (!querySearch) {
+        return null;
       }
       const url = new URL(route, this.apiUrl);
       for (const [key, value] of Object.entries(params)) {
         url.searchParams.set(key, value);
       }
-      console.log(url);
       response = await fetch(url);
     } catch (e) {
       console.log(`Error while retrieving info for route ${route}`, e);

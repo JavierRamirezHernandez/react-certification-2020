@@ -45,14 +45,12 @@ function HomePage() {
       </div>
 
       {isLoading ? <div>loading...</div> : null}
-      {!objectIsEmpty(data) ? (
+      {!objectIsEmpty(data) && (
         <>
           <List isLoading={isLoading} data={data} />
           {/* {data.prevPageToken && <button type="button">Previous</button>}
           {data.nextPageToken && <button type="button">Next</button>} */}
         </>
-      ) : (
-        <div>Not found videos</div>
       )}
     </section>
   );
