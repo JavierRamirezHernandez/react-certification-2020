@@ -1,12 +1,12 @@
 import React from 'react';
 import { useApi } from '../../API';
 import List from '../../components/Videos/Favorites/List';
-import { useAuth } from '../../providers/Auth';
+import { useFav } from '../../providers/Favorites/Favorites.provider';
 import './Favorites.styles.css';
 import { objectIsEmpty } from '../../utils/fns';
 
 function FavoritesPage() {
-  const { favList, authenticated, user } = useAuth();
+  const { favList } = useFav();
   const { isLoading, data } = useApi('videos', favList);
   return (
     <section>

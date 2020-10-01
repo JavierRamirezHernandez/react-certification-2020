@@ -3,11 +3,11 @@ import React from 'react';
 import { Card, Grid } from 'semantic-ui-react';
 // import { FormattedMessage } from 'react-intl';
 // import { withLoadingState } from '../../HoC';
-import { useAuth } from '../../providers/Auth/Auth.provider';
+import { useFav } from '../../providers/Favorites/Favorites.provider';
 
 const Detail = ({ data }) => {
   const video = data.items[0];
-  const { addFavorite, removeFavorite, isFavoriteVideo } = useAuth();
+  const { addFavorite, removeFavorite, isFavoriteVideo } = useFav();
 
   function addToFavorites(videoId) {
     addFavorite(videoId);

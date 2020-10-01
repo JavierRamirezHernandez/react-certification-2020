@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Card, Image } from 'semantic-ui-react';
-import { useAuth } from '../../../providers/Auth';
+import { useFav } from '../../../providers/Favorites/Favorites.provider';
 
 const Info = ({ video }) => {
-  const { addFavorite, removeFavorite, isFavoriteVideo } = useAuth();
+  const { addFavorite, removeFavorite, isFavoriteVideo } = useFav();
 
   function addToFavorites(videoId) {
     addFavorite(videoId);

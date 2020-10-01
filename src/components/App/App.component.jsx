@@ -2,11 +2,11 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import AuthProvider from '../../providers/Auth';
+import FavProvider from '../../providers/Favorites';
 import HomePage from '../../pages/Home';
 import VideoDetailsPage from '../../pages/VideoDetails';
 import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
-import SecretPage from '../../pages/Secret';
 import FavoritesPage from '../../pages/Favorites';
 import Private from '../Private';
 import Fortune from '../Fortune';
@@ -29,10 +29,14 @@ function App() {
             </Layout>
           </Route>
           <Private exact path="/favorites">
-            <FavoritesPage />
+            <FavProvider>
+              <FavoritesPage />
+            </FavProvider>
           </Private>
           <Route exact path="/:id">
-            <VideoDetailsPage />
+            <FavProvider>
+              <VideoDetailsPage />
+            </FavProvider>
           </Route>
           <Route path="*">
             <NotFound />

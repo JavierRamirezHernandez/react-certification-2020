@@ -16,14 +16,13 @@ function LoginPage() {
     event.preventDefault();
     loginApi(username, password)
       .then((user) => {
-        console.log(user);
         login(user);
         history.push('/');
       })
       .catch((error) => {
         setUsername('');
         setPassword('');
-        console.log(error.message);
+        console.error(error.message);
       });
   }
 

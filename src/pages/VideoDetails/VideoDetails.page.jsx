@@ -10,7 +10,6 @@ function VideoDetailsPage() {
   const { id } = useParams();
   const { isLoading, data } = useApi('videos', id);
 
-  console.log(data);
   return (
     <>
       {isLoading ? <div>loading...</div> : null}
