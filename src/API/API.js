@@ -7,7 +7,7 @@ class API {
   constructor() {
     this.apiUrl = new URL('https://www.googleapis.com/youtube/v3/');
     this.API_KEY = 'AIzaSyAlEpcNYV9orZvOMl9Y8fMzpr-3aPWT9JU';
-    this.mockData = false;
+    this.mockData = true;
     this.queryParams = {
       key: this.API_KEY,
       part: 'snippet',

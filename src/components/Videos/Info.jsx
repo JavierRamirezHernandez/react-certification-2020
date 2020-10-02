@@ -1,21 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Grid, Card, Image } from 'semantic-ui-react';
+import { Card } from 'react-bootstrap';
+import { useHistory } from 'react-router';
 
 const Info = ({ video }) => {
-  // console.log(video);
+  const history = useHistory();
+  const handleGoToVideo = () => history.push(`/${video.id.videoId}`);
+
   return (
-    <Grid.Column centered>
-      <Card fluid>
-        <Link to={`/${video.id.videoId}`}>
-          <Image src={video.snippet.thumbnails.medium.url} wrapped ui={false} />
-        </Link>
-        <Card.Content>
-          <Card.Header textAlign="center">{video.snippet.title}</Card.Header>
-          <Card.Meta>{video.snippet.description}</Card.Meta>
-        </Card.Content>
-      </Card>
-    </Grid.Column>
+    <Card>
+      <Card.Img
+        variant="top"
+        src={video.snippet.thumbnails.medium.url}
+        onClick={handleGoToVideo}
+        style={{ cursor: 'pointer' }}
+      />
+      <Card.Body>
+        <Card.Title>{video.snippet.title}</Card.Title>
+        <Card.Text className="text-muted text-justify">
+          {video.snippet.description}
+        </Card.Text>
+      </Card.Body>
+    </Card>
   );
 };
 

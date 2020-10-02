@@ -1,15 +1,17 @@
 import React from 'react';
-import { Grid } from 'semantic-ui-react';
+import { Col, Row } from 'react-bootstrap';
 import Info from './Info';
 
 const VideosList = ({ data }) => {
   const { items } = data;
   return (
-    <Grid columns={4}>
+    <Row>
       {items.map((video) => (
-        <Info key={video.id.videoId} video={video} />
+        <Col xs={12} sm={4} md={3} style={{ marginBottom: '10px' }}>
+          <Info key={video.id.videoId} video={video} />
+        </Col>
       ))}
-    </Grid>
+    </Row>
   );
 };
 
