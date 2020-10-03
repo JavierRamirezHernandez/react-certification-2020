@@ -1,15 +1,13 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
+import CancelIcon from '@material-ui/icons/Cancel';
 import { useHistory } from 'react-router';
 import { useFav } from '../../../providers/Favorites/Favorites.provider';
 
 const InfoFavorite = ({ video }) => {
-  const { addFavorite, removeFavorite, isFavoriteVideo } = useFav();
+  const { removeFavorite, isFavoriteVideo } = useFav();
   const history = useHistory();
 
-  function addToFavorites(videoId) {
-    addFavorite(videoId);
-  }
   function removeFromFavorites(videoId) {
     removeFavorite(videoId);
   }
@@ -40,53 +38,12 @@ const InfoFavorite = ({ video }) => {
               variant="outline-danger"
               onClick={() => removeFromFavorites(video.id)}
             >
-              <i className="minus circle icon" />
+              <CancelIcon />
               Remove from favorites
             </Button>
-          ) : (
-            <Button variant="danger" onClick={() => addToFavorites(video.id)}>
-              <i className="plus icon" />
-              Add to favorites
-            </Button>
-          )}
+          ) : null}
         </Card.Footer>
       </Card>
-      {/* <Grid.Column>
-        <Card fluid>
-          <Link to={`/${video.id}`}>
-            <Image src={video.snippet.thumbnails.medium.url} />
-          </Link>
-          <Card.Content>
-            <Card.Description textAlign="right">
-              {isFavoriteVideo(video.id) ? (
-                <button
-                  className="ui inverted red button"
-                  type="button"
-                  onClick={() => removeFromFavorites(video.id)}
-                >
-                  <i className="minus circle icon" />
-                  Remove from favorites
-                </button>
-              ) : (
-                <button
-                  className="ui youtube button"
-                  type="button"
-                  onClick={() => addToFavorites(video.id)}
-                >
-                  <i className="plus icon" />
-                  Add to favorites
-                </button>
-              )}
-              <br />
-              <br />
-            </Card.Description>
-            <Card.Header>{video.snippet.localized.title}</Card.Header>
-            <Card.Meta textAlign="justify">
-              {video.snippet.localized.description}
-            </Card.Meta>
-          </Card.Content>
-        </Card>
-      </Grid.Column> */}
     </>
   );
 };

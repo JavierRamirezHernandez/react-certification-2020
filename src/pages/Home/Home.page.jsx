@@ -10,6 +10,7 @@ import {
   Col,
   Spinner,
 } from 'react-bootstrap';
+import SearchIcon from '@material-ui/icons/Search';
 import { useApi } from '../../API';
 import List from '../../components/Videos/List';
 import './Home.styles.css';
@@ -42,7 +43,7 @@ function HomePage() {
                     size="lg"
                   />
                   <InputGroup.Append>
-                    <Button variant="danger">Search</Button>
+                    <Button variant="danger"><SearchIcon /></Button>
                   </InputGroup.Append>
                 </InputGroup>
               </Form>

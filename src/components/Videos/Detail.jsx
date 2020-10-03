@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React from 'react';
 import { Card, Row, Col, Button } from 'react-bootstrap';
+import LibraryAddIcon from '@material-ui/icons/LibraryAdd';
+import CancelIcon from '@material-ui/icons/Cancel';
 import { useFav } from '../../providers/Favorites/Favorites.provider';
 
 const Detail = ({ data }) => {
@@ -50,12 +52,12 @@ const Detail = ({ data }) => {
                     variant="outline-danger"
                     onClick={() => removeFromFavorites(video.id)}
                   >
-                    <i className="minus circle icon" />
+                    <CancelIcon />
                     Remove from favorites
                   </Button>
                 ) : (
                   <Button variant="danger" onClick={() => addToFavorites(video.id)}>
-                    <i className="plus icon" />
+                    <LibraryAddIcon />
                     Add to favorites
                   </Button>
                 )}
