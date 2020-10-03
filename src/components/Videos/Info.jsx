@@ -5,6 +5,7 @@ import { useHistory } from 'react-router';
 const Info = ({ video }) => {
   const history = useHistory();
   const handleGoToVideo = () => history.push(`/${video.id.videoId}`);
+  const videoDate = new Date(video.snippet.publishedAt).toLocaleString().split(',')[0];
 
   return (
     <Card>
@@ -17,7 +18,8 @@ const Info = ({ video }) => {
       <Card.Body>
         <Card.Title>{video.snippet.title}</Card.Title>
         <Card.Text className="text-muted text-justify">
-          {video.snippet.description}
+          <div>{video.snippet.channelTitle}</div>
+          <div>Since {videoDate}</div>
         </Card.Text>
       </Card.Body>
     </Card>

@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import AuthProvider from '../../providers/Auth';
-import FavProvider from '../../providers/Favorites';
+import FavProvider from '../../providers/Favorites/';
 import HomePage from '../../pages/Home';
 import VideoDetailsPage from '../../pages/VideoDetails';
 import LoginPage from '../../pages/Login';

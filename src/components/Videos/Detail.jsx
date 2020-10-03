@@ -13,6 +13,9 @@ const Detail = ({ data }) => {
   function removeFromFavorites(videoId) {
     removeFavorite(videoId);
   }
+
+  const videoDate = new Date(video.snippet.publishedAt).toLocaleString().split(',')[0];
+
   return (
     <>
       <Card>
@@ -62,8 +65,10 @@ const Detail = ({ data }) => {
               <Col>{video.snippet.title}</Col>
             </Row>
           </Card.Title>
+          <Card.Text>{video.snippet.channelTitle}</Card.Text>
           <Card.Text className="text-muted text-justify">
-            {video.snippet.description}
+            <p>Since {videoDate}</p>
+            <div>{video.snippet.description}</div>
           </Card.Text>
         </Card.Body>
       </Card>

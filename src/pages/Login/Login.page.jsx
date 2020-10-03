@@ -41,13 +41,13 @@ function LoginPage() {
             <FormControl
               placeholder="Username"
               onChange={(e) => setUsername(e.target.value)}
-            ></FormControl>
+            />
           </FormGroup>
           <FormGroup controlId="formPassword">
             <FormControl
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
-            ></FormControl>
+            />
           </FormGroup>
           <Button variant="primary" type="submit">
             Login

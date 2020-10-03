@@ -16,6 +16,8 @@ const InfoFavorite = ({ video }) => {
 
   const handleGoToVideo = () => history.push(`/${video.id}`);
 
+  const videoDate = new Date(video.snippet.publishedAt).toLocaleString().split(',')[0];
+
   return (
     <>
       <Card>
@@ -28,7 +30,8 @@ const InfoFavorite = ({ video }) => {
         <Card.Body>
           <Card.Title>{video.snippet.localized.title}</Card.Title>
           <Card.Text className="text-muted text-justify">
-            {video.snippet.channelTitle}
+            <div>{video.snippet.channelTitle}</div>
+            <div>Since {videoDate}</div>
           </Card.Text>
         </Card.Body>
         <Card.Footer className="text-right">
