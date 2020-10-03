@@ -1,8 +1,6 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React from 'react';
-import { Card, Grid } from 'semantic-ui-react';
-// import { FormattedMessage } from 'react-intl';
-// import { withLoadingState } from '../../HoC';
+import { Card, Row, Col, Button } from 'react-bootstrap';
 import { useFav } from '../../providers/Favorites/Favorites.provider';
 
 const Detail = ({ data }) => {
@@ -16,16 +14,17 @@ const Detail = ({ data }) => {
     removeFavorite(videoId);
   }
   return (
-    <Grid columns={2} divided>
-      <Grid.Row>
-        <Grid.Column>
+    <>
+      <Card>
+        <Card.Body>
           <div
             className="video"
             style={{
               position: 'relative',
-              paddingBottom: '56.25%' /* 16:9 */,
+              paddingBottom: '56.25%',
               paddingTop: 25,
               height: 0,
+              marginBottom: '20px',
             }}
           >
             <iframe
@@ -40,42 +39,35 @@ const Detail = ({ data }) => {
               frameBorder="0"
             />
           </div>
-        </Grid.Column>
-        <Grid.Column>
-          <Card fluid>
-            <Card.Content>
-              <Card.Description textAlign="right">
+          <Card.Title>
+            <Row>
+              <Col className="text-right">
                 {isFavoriteVideo(video.id) ? (
-                  <button
-                    className="ui inverted red button"
-                    type="button"
+                  <Button
+                    variant="outline-danger"
                     onClick={() => removeFromFavorites(video.id)}
                   >
                     <i className="minus circle icon" />
                     Remove from favorites
-                  </button>
+                  </Button>
                 ) : (
-                  <button
-                    className="ui youtube button"
-                    type="button"
-                    onClick={() => addToFavorites(video.id)}
-                  >
+                  <Button variant="danger" onClick={() => addToFavorites(video.id)}>
                     <i className="plus icon" />
                     Add to favorites
-                  </button>
+                  </Button>
                 )}
-                <br />
-                <br />
-              </Card.Description>
-              <Card.Header textAlign="center">{video.snippet.title}</Card.Header>
-              <Card.Meta>
-                <strong>{video.snippet.description}</strong>
-              </Card.Meta>
-            </Card.Content>
-          </Card>
-        </Grid.Column>
-      </Grid.Row>
-    </Grid>
+              </Col>
+            </Row>
+            <Row>
+              <Col>{video.snippet.title}</Col>
+            </Row>
+          </Card.Title>
+          <Card.Text className="text-muted text-justify">
+            {video.snippet.description}
+          </Card.Text>
+        </Card.Body>
+      </Card>
+    </>
   );
 };
 

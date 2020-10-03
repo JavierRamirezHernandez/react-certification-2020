@@ -1,7 +1,7 @@
 import React from 'react';
 import { objectIsEmpty } from '../../../utils/fns';
 import { useApi } from '../../../API';
-import List from '../List';
+import ListRelatedVideos from './ListRelatedVideos';
 
 function RelatedVideos({ id }) {
   const { isLoading, data } = useApi('search', null, id);
@@ -9,7 +9,7 @@ function RelatedVideos({ id }) {
   return (
     <>
       {isLoading ? <div>loading...</div> : null}
-      {!objectIsEmpty(data) ? <List data={data} /> : <div>Video not found</div>}
+      {!objectIsEmpty(data) ? <ListRelatedVideos data={data} /> : null}
     </>
   );
 }
