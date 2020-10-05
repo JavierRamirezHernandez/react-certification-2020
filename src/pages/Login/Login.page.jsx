@@ -39,12 +39,14 @@ function LoginPage() {
         <Form onSubmit={authenticate}>
           <FormGroup controlId="formEmail">
             <FormControl
+              data-testid="username"
               placeholder="Username"
               onChange={(e) => setUsername(e.target.value)}
             />
           </FormGroup>
           <FormGroup controlId="formPassword">
             <FormControl
+              data-testid="password"
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
             />

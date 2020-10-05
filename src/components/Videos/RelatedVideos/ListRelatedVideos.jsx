@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Card, ListGroup } from 'react-bootstrap';
+import { Card, ListGroup } from 'react-bootstrap';
 import InfoVideo from './InfoVideo';
 
 const VideosList = ({ data }) => {

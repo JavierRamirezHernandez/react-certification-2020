@@ -27,10 +27,10 @@ const InfoFavorite = ({ video }) => {
         />
         <Card.Body>
           <Card.Title>{video.snippet.localized.title}</Card.Title>
-          <Card.Text className="text-muted text-justify">
+          <div className="text-muted text-justify">
             <div>{video.snippet.channelTitle}</div>
             <div>Since {videoDate}</div>
-          </Card.Text>
+          </div>
         </Card.Body>
         <Card.Footer className="text-right">
           {isFavoriteVideo(video.id) ? (

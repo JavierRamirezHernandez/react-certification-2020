@@ -5,12 +5,12 @@ import './NotFound.styles.css';
 
 function NotFoundPage() {
   return (
-    <section className="not-found">
+    <div className="not-found">
       <Link to="/" className="home-link">
         home
       </Link>
       <img src="404.gif" alt="page not found" />
-    </section>
+    </div>
   );
 }
 

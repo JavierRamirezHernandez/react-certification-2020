@@ -39,7 +39,7 @@ function FavProvider({ children }) {
     [favList]
   );
 
-  const isAdded = (videoId) => favList.indexOf(videoId) > -1;
+  const isAdded = (videoId) => favList && favList.indexOf(videoId) > -1;
 
   const isFavoriteVideo = useCallback((videoId) => isAdded(videoId), [favList]);
 

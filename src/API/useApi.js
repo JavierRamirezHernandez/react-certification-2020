@@ -14,7 +14,7 @@ const useApi = (entity, id, relatedToVideoId) => {
     }
     requestPromisse
       .then((response) => {
-        if (response['error']) throw response['error']['message'];
+        if (response && response['error']) throw response['error']['message'];
         setData(response);
         setIsLoading(false);
       })

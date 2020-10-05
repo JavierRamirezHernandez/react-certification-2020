@@ -1,4 +1,4 @@
-function random(limit) {
+function random(limit = 1) {
   return Math.floor(Math.random() * limit);
 }
 

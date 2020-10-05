@@ -3,10 +3,12 @@ import React from 'react';
 import { Card, Row, Col, Button } from 'react-bootstrap';
 import LibraryAddIcon from '@material-ui/icons/LibraryAdd';
 import CancelIcon from '@material-ui/icons/Cancel';
+import { useAuth } from '../../providers/Auth/Auth.provider';
 import { useFav } from '../../providers/Favorites/Favorites.provider';
 
 const Detail = ({ data }) => {
   const video = data.items[0];
+  const { authenticated } = useAuth();
   const { addFavorite, removeFavorite, isFavoriteVideo } = useFav();
 
   function addToFavorites(videoId) {
@@ -45,33 +47,35 @@ const Detail = ({ data }) => {
             />
           </div>
           <Card.Title>
-            <Row>
-              <Col className="text-right">
-                {isFavoriteVideo(video.id) ? (
-                  <Button
-                    variant="outline-danger"
-                    onClick={() => removeFromFavorites(video.id)}
-                  >
-                    <CancelIcon />
-                    Remove from favorites
-                  </Button>
-                ) : (
-                  <Button variant="danger" onClick={() => addToFavorites(video.id)}>
-                    <LibraryAddIcon />
-                    Add to favorites
-                  </Button>
-                )}
-              </Col>
-            </Row>
+            {authenticated && (
+              <Row>
+                <Col className="text-right">
+                  {isFavoriteVideo(video.id) ? (
+                    <Button
+                      variant="outline-danger"
+                      onClick={() => removeFromFavorites(video.id)}
+                    >
+                      <CancelIcon />
+                      Remove from favorites
+                    </Button>
+                  ) : (
+                    <Button variant="danger" onClick={() => addToFavorites(video.id)}>
+                      <LibraryAddIcon />
+                      Add to favorites
+                    </Button>
+                  )}
+                </Col>
+              </Row>
+            )}
             <Row>
               <Col>{video.snippet.title}</Col>
             </Row>
           </Card.Title>
           <Card.Text>{video.snippet.channelTitle}</Card.Text>
-          <Card.Text className="text-muted text-justify">
+          <div className="text-muted text-justify">
             <p>Since {videoDate}</p>
             <div>{video.snippet.description}</div>
-          </Card.Text>
+          </div>
         </Card.Body>
       </Card>
     </>

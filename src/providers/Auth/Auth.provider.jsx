@@ -57,5 +57,5 @@ function AuthProvider({ children }) {
   );
 }
 
-export { useAuth };
+export { useAuth, AuthProvider };
 export default AuthProvider;
