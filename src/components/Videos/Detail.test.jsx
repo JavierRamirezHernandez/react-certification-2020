@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
+import { AuthProvider } from '../../providers/Auth/Auth.provider';
 import { FavProvider } from '../../providers/Favorites/Favorites.provider';
 import Detail from './Detail';
 import data from '../../assets/data/video.json';
@@ -22,9 +23,11 @@ describe('Detail Component', () => {
   it('render with data', () => {
     act(() => {
       render(
-        <FavProvider>
-          <Detail data={data} />
-        </FavProvider>,
+        <AuthProvider>
+          <FavProvider>
+            <Detail data={data} />
+          </FavProvider>
+        </AuthProvider>,
         container
       );
     });

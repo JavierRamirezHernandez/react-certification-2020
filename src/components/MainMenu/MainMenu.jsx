@@ -32,13 +32,22 @@ const MainMenu = () => {
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Navbar.Brand onClick={() => handleGoTo('/')}>YouTube React Client</Navbar.Brand>
+      <Navbar.Brand onClick={() => handleGoTo('/')} data-testid="brandLogo">
+        YouTube React Client
+      </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link onClick={() => handleGoTo('/')}>Home</Nav.Link>
+          <Nav.Link onClick={() => handleGoTo('/')} data-testid="homeItem">
+            Home
+          </Nav.Link>
           {authenticated && (
-            <Nav.Link onClick={() => handleGoTo('/favorites')}>Favorites</Nav.Link>
+            <Nav.Link
+              onClick={() => handleGoTo('/favorites')}
+              data-testid="favoritesItem"
+            >
+              Favorites
+            </Nav.Link>
           )}
         </Nav>
         <Nav>{authNavItem}</Nav>

@@ -36,7 +36,7 @@ function LoginPage() {
       </Card.Header>
       <Card.Body className="text-center">
         {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
-        <Form onSubmit={authenticate}>
+        <Form onSubmit={authenticate} data-testid="loginForm">
           <FormGroup controlId="formEmail">
             <FormControl
               data-testid="username"
@@ -51,7 +51,7 @@ function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </FormGroup>
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" data-testid="submit">
             Login
           </Button>
         </Form>
