@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, unmountComponentAtNode } from 'react-dom';
+import { unmountComponentAtNode } from 'react-dom';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import Home from './Home.page';
 
@@ -22,5 +23,16 @@ describe('Home Page', () => {
       render(<Home />, container);
     });
     expect(container).toBeDefined();
+  });
+
+  it('change input search value', () => {
+    act(() => {
+      render(<Home />, container);
+    });
+    const inputSearch = screen.getByTestId('querySearch');
+    expect(inputSearch.value).toEqual('');
+
+    fireEvent.change(inputSearch, { target: { value: 'wizeline' } });
+    expect(inputSearch.value).toEqual('wizeline');
   });
 });

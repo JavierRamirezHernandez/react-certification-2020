@@ -21,7 +21,7 @@ const useApi = (entity, id, relatedToVideoId) => {
       .catch((error) => {
         setData(null);
         setIsLoading(false);
-        console.error(error);
+        // console.error(error);
       });
   }, [entity, id, relatedToVideoId]);
   return { isLoading, data };

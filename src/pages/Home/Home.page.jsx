@@ -41,6 +41,7 @@ function HomePage() {
                     aria-label="Search..."
                     aria-describedby="basic-addon2"
                     size="lg"
+                    data-testid="querySearch"
                   />
                   <InputGroup.Append>
                     <Button variant="danger"><SearchIcon /></Button>

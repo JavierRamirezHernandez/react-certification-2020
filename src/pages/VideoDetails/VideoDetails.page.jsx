@@ -18,9 +18,7 @@ function VideoDetailsPage() {
           <Col xs={12} md={8}>
             {isLoading ? <div>loading...</div> : null}
             {!objectIsEmpty(data) ? (
-              <div>
-                <Detail isLoading={isLoading} data={data} />
-              </div>
+              <Detail isLoading={isLoading} data={data} />
             ) : (
               <div>Video not found</div>
             )}
